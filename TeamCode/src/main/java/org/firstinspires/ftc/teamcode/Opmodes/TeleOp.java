@@ -9,12 +9,12 @@ public class TeleOp extends LinearOpMode {
         Drivetrain drive = new Drivetrain(this);
         drive.init();
 
-        waitForStart();;
+        waitForStart();
 
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-            drive.Drive(gamepad1.left_stick_y,gamepad1.left_stick_x,gamepad1.right_stick_x);
+            drive.Drive(-gamepad1.left_stick_y,gamepad1.left_stick_x,gamepad1.right_stick_x);
         }
     }
 }
