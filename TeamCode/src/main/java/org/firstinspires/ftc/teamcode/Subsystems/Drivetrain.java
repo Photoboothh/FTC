@@ -39,8 +39,6 @@ public class Drivetrain extends LinearOpMode {
             frontright.setPower(frontrightPower);
             backright.setPower(backrightPower);
 
-            //asbs
-
         }
     }
 }
