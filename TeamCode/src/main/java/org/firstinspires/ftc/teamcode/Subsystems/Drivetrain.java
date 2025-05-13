@@ -4,7 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.GoBildaPinpointDriver;
+
 public class Drivetrain  {
+    GoBildaPinpointDriver odometry;
     private LinearOpMode opMode;
     private DcMotor frontleft;
     private DcMotor frontright;
@@ -15,6 +20,7 @@ public class Drivetrain  {
         this.opMode = opMode;
     }
     public void init() {
+        odometry = opMode.hardwareMap.get(GoBildaPinpointDriver.class,"odometry");
         frontleft = opMode.hardwareMap.get(DcMotor.class, "frontleft");
         frontright = opMode.hardwareMap.get(DcMotor.class, "frontright");
         backleft = opMode.hardwareMap.get(DcMotor.class, "backleft");
@@ -34,5 +40,9 @@ public class Drivetrain  {
         backleft.setPower(backleftPower);
         frontright.setPower(frontrightPower);
         backright.setPower(backrightPower);
+
+        opMode.telemetry.addData("X pos: ",odometry.getPosX(DistanceUnit.MM));
+        opMode.telemetry.addData("Y pos: ",odometry.getPosY(DistanceUnit.MM));
+        opMode.telemetry.addData("Heading: ",odometry.getHeading(AngleUnit.DEGREES));
     }
 }
