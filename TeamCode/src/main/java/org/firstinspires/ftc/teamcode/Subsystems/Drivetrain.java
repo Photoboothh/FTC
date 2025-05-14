@@ -44,5 +44,6 @@ public class Drivetrain  {
         opMode.telemetry.addData("X pos: ",odometry.getPosX(DistanceUnit.MM));
         opMode.telemetry.addData("Y pos: ",odometry.getPosY(DistanceUnit.MM));
         opMode.telemetry.addData("Heading: ",odometry.getHeading(AngleUnit.DEGREES));
+        odometry.update();
     }
 }
